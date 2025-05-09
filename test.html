@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Representatives in X</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f2f4f8, #e6ecf4);
+      color: #111;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.95rem;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-right .cta {
+      background: #111;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+    .hero .tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.2;
+    }
+    .floating {
+      position: absolute;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .avatar {
+      width: 64px;
+      height: 64px;
+    }
+    .main-image {
+      margin-top: 3rem;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    .card {
+      position: absolute;
+      background: white;
+      padding: 0.75rem 1rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+    .card1 { top: 35%; left: 10%; }
+    .card2 { bottom: 20%; right: 10%; }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav-left">
+      <span>Solutions</span>
+      <span>Promote</span>
+      <span>Price</span>
+      <span>About our method</span>
+    </nav>
+    <nav class="nav-right">
+      <span>Sign in</span>
+      <span class="cta">Create free account</span>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="tagline">A platform to manage your</div>
+    <h1>AI Representatives in X</h1>
+
+    <!-- Floating avatars -->
+    <div class="floating" style="top: 25%; left: 15%;">
+      <img src="https://i.pravatar.cc/64?img=32" alt="Avatar" class="avatar" />
+    </div>
+    <div class="floating" style="top: 20%; right: 12%;">
+      <img src="https://i.pravatar.cc/64?img=25" alt="Avatar" class="avatar" />
+    </div>
+    <div class="floating" style="bottom: 25%; left: 5%;">
+      <img src="https://i.pravatar.cc/64?img=45" alt="Avatar" class="avatar" />
+    </div>
+
+    <!-- Central main image -->
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="main-image" alt="Hero" />
+
+    <!-- Cards -->
+    <div class="card card1">Like posts by your representatives</div>
+    <div class="card card2">Report products to increase sales</div>
+  </section>
+</body>
+</html>

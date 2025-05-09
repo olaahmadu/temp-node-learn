@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three.js Shooter Game</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: #000; }
+    #ammoCounter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 18px;
+      padding: 5px 10px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+<div id="ammoCounter">Ammo: 20</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script>
+// Scene, camera, renderer
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Camera position
+camera.position.set(0, 2, 10);
+camera.lookAt(0, 0, 0);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+dirLight.position.set(5, 10, 7.5);
+scene.add(dirLight);
+
+// Player
+const playerGeometry = new THREE.BoxGeometry(1,1,1);
+const playerMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+const player = new THREE.Mesh(playerGeometry, playerMaterial);
+scene.add(player);
+player.position.set(0, 0, 0);
+
+// Ammo & bullets
+let ammo = 20;
+const ammoCounter = document.getElementById('ammoCounter');
+const bullets = [];
+
+function shoot() {
+  if (ammo <= 0) return;
+  ammo--;
+  ammoCounter.innerText = `Ammo: ${ammo}`;
+  const bulletGeom = new THREE.SphereGeometry(0.1, 8, 8);
+  const bulletMat = new THREE.MeshLambertMaterial({ color: 0xffff00 });
+  const bullet = new THREE.Mesh(bulletGeom, bulletMat);
+  bullet.position.copy(player.position);
+  scene.add(bullet);
+  bullets.push(bullet);
+}
+
+document.addEventListener('click', shoot);
+
+// Enemies
+const enemies = [];
+function spawnEnemy() {
+  const geo = new THREE.BoxGeometry(1,1,1);
+  const mat = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+  const enemy = new THREE.Mesh(geo, mat);
+  // spawn far in front
+  enemy.position.set((Math.random() - 0.5) * 10, (Math.random() - 0.5) * 5, -50);
+  scene.add(enemy);
+  enemies.push(enemy);
+}
+setInterval(spawnEnemy, 1000);
+
+// Resize handling
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Game loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Move bullets
+  bullets.forEach((b, i) => {
+    b.position.z -= 0.5;
+    if (b.position.z < -100) {
+      scene.remove(b);
+      bullets.splice(i, 1);
+    }
+  });
+
+  // Move enemies and check collisions
+  enemies.forEach((e, j) => {
+    e.position.z += 0.2;
+    // If enemy reaches player
+    if (e.position.z >= player.position.z + 1) {
+      console.log('Game Over');
+      scene.remove(e);
+      enemies.splice(j,1);
+    }
+    // Check bullet hit
+    bullets.forEach((b, k) => {
+      if (b.position.distanceTo(e.position) < 0.75) {
+        scene.remove(e);
+        enemies.splice(j,1);
+        scene.remove(b);
+        bullets.splice(k,1);
+      }
+    });
+  });
+
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+* {
+    margin: unset;
+    padding: unset;
+    font-family: 'SourceSans3', sans-serif;
+    --c-01: #213448;
+    --c-02: #547792;
+    --c-03: #94B4C1;
+    --c-04: #ECEFCA;
+    --fs-xxs: 0.625rem;
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 1.875rem;
+    --fs-3-5xl: 2rem;
+    --fs-3-75xl: 2.125rem;
+    --fs-4xl: 2.25rem;
+    --fs-5xl: 3rem;
+}
+* a {
+    text-decoration: none;
+    cursor: url('svg/cursor/cursors_pointer (7).svg') 15 5, auto;
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('FONTS/sourcesans3-400.woff') format('woff');
+}
+@font-face {
+    font-display: auto;
+    font-family: SourceSans3;
+    font-style: normal;
+    font-weight: 400;
+    src: url('FONTS/sourcesans3-400.woff')format("woff");
+}
+@font-face {
+    font-display: auto;
+    font-family: SourceS7\ns3;
+    font-style: normal;
+    font-weight: 500;
+    src: url('FONTS/sourcesans3-500.woff')format("woff");
+}
+
+@font-face {
+    font-display: auto;
+    font-family: SourceSans3;
+    font-style: normal;
+    font-weight: 600;
+    src: url('FONTS/sourcesans3-600.woff')format("woff");
+}
+
+@font-face {
+    font-display: auto;
+    font-family: SourceSans3;
+    font-style: normal;
+    font-weight: 700;
+    src: url('FONTS/sourcesans3-700.woff')format("woff");
+}
+.main {
+    display: grid;
+}
+.head {
+    display: grid;
+    height: auto;
+    padding: var(--fs-base);
+    background-color: var(--c-01);
+    grid-template-columns: repeat(2, 45%);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: var(--fs-base);
+    box-sizing: border-box;
+    color: var(--c-04);
+}
+.headLeft {
+    /* height: 85%; */
+    align-self: center;
+}
+.headLeft > h2 {
+    font-size: var(--fs-3-75xl);
+}
+.headLeft > p {
+    font-size: var(--fs-base);
+}
+.searchBar {
+    display: grid;
+    background-color: var(--c-04);
+    border-radius: var(--fs-xxs);
+    width: 15rem;
+    height: var(--fs-4xl);
+    margin: var(--fs-sm) 0;
+}
+.searchBar::after {
+    justify-self: start;
+    color: black;
+    margin: .5rem 1rem;
+    content: "Explore Courses";
+}
+.searchBar::before {
+    color: black;
+    justify-self: end;
+    margin: .5rem 1rem;
+    content: "ES";
+    position: absolute;
+}
+.down {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 2.5rem;
+}
+.updates {
+    width: 95%;
+    justify-self: center;
+    display: grid;
+    grid-template-rows: .15fr .85fr;
+
+}
+.updateText {
+    font-weight: 600;
+    margin: var(--fs-xl) var(--fs-xl) var(--fs-xl) 0;
+    font-size: var(--fs-4xl);
+}
+.updates > ul {
+    display: grid;
+    height: 10rem;
+    /* gap: 1rem; */
+    width: 95%;
+    grid-template-columns: repeat(3, 33.33%)
+}
+.updates > ul > li{
+    display: grid;
+    width: calc(100% - 1rem);
+    justify-self: center;
+    border-radius: var(--fs-2xl);
+}
+.updates > ul > li > div:first-child{
+    display: grid;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    background-color: var(--c-02);
+    border-radius: var(--fs-xxs) var(--fs-xxs) 0 0;
+    align-items: center;
+    /* padding: 0 1rem; */
+}
+.updates > ul > li > div:first-child > span{
+    /* justify-self: center;
+    align-self: center; */
+}
+.updates > ul > li > div:last-child{
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    background-color: var(--c-04);
+    border-radius: 0 0 var(--fs-xxs) var(--fs-xxs);
+    align-items: center;
+    /* padding: 0 1rem; */
+    width: 100%;
+}

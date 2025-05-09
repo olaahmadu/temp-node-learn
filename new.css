@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #f8f9fd;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu li {
+    color: #666;
+    cursor: pointer;
+}
+
+.zoom-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.create-account {
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    border: none;
+    background: #000;
+    color: white;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 4rem;
+}
+
+/* Showcase */
+.showcase {
+    position: relative;
+    min-height: 400px;
+    margin-top: 2rem;
+}
+
+.central-image {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.central-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile Bubbles */
+.profile-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.profile {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile1 { top: 10%; left: 10%; }
+.profile2 { top: 20%; right: 15%; }
+.profile3 { bottom: 30%; left: 5%; }
+.profile4 { bottom: 20%; right: 10%; }
+
+/* Feature Tags */
+.feature-tags {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.tag {
+    padding: 0.8rem 1.5rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .profile {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .central-image {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .profile {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .tag {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+}
